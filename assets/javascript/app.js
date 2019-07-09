@@ -81,6 +81,7 @@ $(document).ready(function(){
             $("#totalIncorrect").html("Incorrect: " + incorrect);
             $("#totalUnanswer").show();
             $("#totalUnanswer").html("Unanswered: " + unanswered);
+            $("#Restart").show();
             $("#Restart").html("Click Start to play again");
             time = 30;
         }
