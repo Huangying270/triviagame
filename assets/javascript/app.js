@@ -7,7 +7,12 @@ $(document).ready(function(){
     var incorrect = 0;
     var unanswered = 0;
 
-
+    var question = ["1","2","3"];
+    var answer = ["1","2","3"];
+    var aChoice = ["1","1","1"];
+    var bChoice = ["2","2","2"];
+    var cChoice = ["3","3","3"];
+    var dChoice = ["4","4","4"];
 
 
 
