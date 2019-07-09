@@ -74,9 +74,15 @@ $(document).ready(function(){
     $("#Choice2").on("click", checkAnswer)
     $("#Choice3").on("click", checkAnswer)
     $("#Choice4").on("click", checkAnswer)
+
+    function displayTime() {
+        time--;
+        $("#timer").html("Time remaining: " + time);
+    }
     
     $(".start").on("click", function(){
         displayTrivia();
+        displayTime();
     })
     // trivia gets displayed, need to make choices clickable and move to next question
 
