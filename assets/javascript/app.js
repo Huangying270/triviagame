@@ -79,6 +79,9 @@ $(document).ready(function(){
     function displayTime() {
         time--;
         $("#timer").html("Time remaining: " + time);
+        if(time <= 0){
+            clearInterval(ticks);
+        }
     }
 
     // need a new variable for countdown
