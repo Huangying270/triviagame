@@ -71,6 +71,9 @@ $(document).ready(function(){
 
     // make choices selectable
     $("#Choice1").on("click", checkAnswer)
+    $("#Choice2").on("click", checkAnswer)
+    $("#Choice3").on("click", checkAnswer)
+    $("#Choice4").on("click", checkAnswer)
     
     $(".start").on("click", function(){
         displayTrivia();
