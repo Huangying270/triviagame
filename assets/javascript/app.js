@@ -10,12 +10,12 @@ $(document).ready(function(){
     var questionNumber = 0;
     var ticks;
 
-    var question = ["1","2","3"];
-    var answer = ["1","2","3"];
-    var aChoice = ["1","1","1"];
-    var bChoice = ["2","2","2"];
-    var cChoice = ["3","3","3"];
-    var dChoice = ["4","4","4"];
+    var question = ["What is pokemon number 1 in the Pokedex","What is fire weak against","Who is the most Iconic Pokemon"];
+    var answer = ["Bulbasaur","Water","Pikachu"];
+    var aChoice = ["Bulbasaur","Flying","Eevee"];
+    var bChoice = ["Charmander","Electric","Pikachu"];
+    var cChoice = ["Squirtle","Water","Charizard"];
+    var dChoice = ["Pikachu","Fighting","Dragonite"];
 
     function showArrays() {
         $("#question").show();
