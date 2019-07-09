@@ -8,6 +8,7 @@ $(document).ready(function(){
     var unanswered = 0;
     // question number 0 is the first question of the array as well as the answers
     var questionNumber = 0;
+    var ticks;
 
     var question = ["1","2","3"];
     var answer = ["1","2","3"];
@@ -79,10 +80,16 @@ $(document).ready(function(){
         time--;
         $("#timer").html("Time remaining: " + time);
     }
+
+    // need a new variable for countdown
+    function startTime() {
+        clearInterval(ticks);
+        ticks = setInterval(displayTime, 1000);
+    }
     
     $(".start").on("click", function(){
         displayTrivia();
-        displayTime();
+        startTime();
     })
     // trivia gets displayed, need to make choices clickable and move to next question
 
