@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     var time = 5;
     var answerChosen = false;
-    var determining = 0;
+    //    var determining = 0; (Same variable as question Number)
     var correct = 0;
     var incorrect = 0;
     var unanswered = 0;
@@ -50,8 +50,27 @@ $(document).ready(function(){
         $("#Choice3").text(cChoice[questionNumber]);
         $("#Choice4").text(dChoice[questionNumber]);
     }
-    // logged onto console without questions or answers
-    console.log(displayTrivia);
+    
+    // function to check answer, if/else
+    function checkAnswer() {
+        hideArrays();
+        if($(this).text() == answer[questionNumber]) {
+            answerChosen = true;
+            $("#answer").show();
+            $("#answer").html("The answer is: " + answer[questionNumber]);
+            correct++;
+            questionNumber++;
+        } else {
+            answerChosen = false;
+            $("#answer").show();
+            $("#answer").html("The answer is: " + answer[questionNumber]);
+            incorrect++;
+            questionNumber++;
+        }
+    }
+
+    // make choices selectable
+    $("#Choice1").on("click", checkAnswer)
     
     $(".start").on("click", function(){
         displayTrivia();
