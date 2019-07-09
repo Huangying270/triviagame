@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var time = 5;
+    var time = 30;
     var answerChosen = false;
     //    var determining = 0; (Same variable as question Number)
     var correct = 0;
