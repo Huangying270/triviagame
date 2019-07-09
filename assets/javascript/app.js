@@ -68,6 +68,22 @@ $(document).ready(function(){
             incorrect++;
             questionNumber++;
         }
+
+        endGame();
+    }
+
+    function endGame() {
+        if(questionNumber === question.length) {
+            $("#timer").hide();
+            $("#totalCorrect").show();
+            $("#totalCorrect").html("Correct: " + correct);
+            $("#totalIncorrect").show();
+            $("#totalIncorrect").html("Incorrect: " + incorrect);
+            $("#totalUnanswer").show();
+            $("#totalUnanswer").html("Unanswered: " + unanswered);
+            $("#Restart").html("Click Start to play again");
+            time = 30;
+        }
     }
 
     // make choices selectable
@@ -80,8 +96,12 @@ $(document).ready(function(){
         time--;
         $("#timer").html("Time remaining: " + time);
         if(time <= 0){
-            clearInterval(ticks);
+            stopTime();
         }
+    }
+
+    function stopTime() {
+        clearInterval(ticks);
     }
 
     // need a new variable for countdown
