@@ -5,7 +5,6 @@ $(document).ready(function(){
     //    var determining = 0; (Same variable as question Number)
     var correct = 0;
     var incorrect = 0;
-    var unanswered = 0;
     // question number 0 is the first question of the array as well as the answers
     var questionNumber = 0;
     var ticks;
@@ -17,6 +16,8 @@ $(document).ready(function(){
     var cChoice = ["Squirtle","Water","Charizard"];
     var dChoice = ["Pikachu","Fighting","Dragonite"];
 
+    var unanswered = question.length;
+
     function showArrays() {
         $("#question").show();
         $("#Choice1").show();
@@ -25,7 +26,7 @@ $(document).ready(function(){
         $("#Choice4").show();
     }
     
-    function hideArrays() {
+       function hideArrays() {
         $("#question").hide();
         $("#Choice1").hide();
         $("#Choice2").hide();
@@ -41,8 +42,11 @@ $(document).ready(function(){
     }
     
     function displayTrivia() {
+
+        $(".start").hide();
+        for(var i = 0; i < question.length; i++){
         hideResults();
-        $("#answer").hide();
+        //$("#answer").hide();
         $("#timer").show();
         showArrays();
         $("#question").text(question[questionNumber]);
@@ -50,6 +54,13 @@ $(document).ready(function(){
         $("#Choice2").text(bChoice[questionNumber]);
         $("#Choice3").text(cChoice[questionNumber]);
         $("#Choice4").text(dChoice[questionNumber]);
+        }
+
+       /*  $("#Choice1").on("click", checkAnswer)
+        $("#Choice2").on("click", checkAnswer)
+        $("#Choice3").on("click", checkAnswer)
+        $("#Choice4").on("click", checkAnswer) */
+    
     }
     
     // function to check answer, if/else
@@ -60,20 +71,26 @@ $(document).ready(function(){
             $("#answer").show();
             $("#answer").html("The answer is: " + answer[questionNumber]);
             correct++;
-            questionNumber++;
+            unanswered--;
+          //  questionNumber++;
         } else {
             answerChosen = false;
             $("#answer").show();
             $("#answer").html("The answer is: " + answer[questionNumber]);
             incorrect++;
-            questionNumber++;
+            unanswered--;
+            console.log(incorrect);
+           // questionNumber++;
         }
 
-        endGame();
+       endGame();
     }
 
     function endGame() {
-        if(questionNumber === question.length) {
+        //console.log(questionNumber);
+        
+        if(questionNumber === question.length || time == 0) {
+            hideArrays();
             $("#timer").hide();
             $("#totalCorrect").show();
             $("#totalCorrect").html("Correct: " + correct);
@@ -84,6 +101,10 @@ $(document).ready(function(){
             $("#Restart").show();
             $("#Restart").html("Click Start to play again");
             time = 30;
+            $(".start").show();
+        } else {
+            questionNumber++;
+            displayTrivia();
         }
     }
 
@@ -98,6 +119,7 @@ $(document).ready(function(){
         $("#timer").html("Time remaining: " + time);
         if(time <= 0){
             stopTime();
+            endGame();
         }
     }
 
